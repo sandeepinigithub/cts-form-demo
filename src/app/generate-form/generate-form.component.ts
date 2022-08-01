@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class GenerateFormComponent implements OnInit {
 
-  customJson: string = `[
+  customJson: any = `[
     {
       "type": "text",
       "name": "firstName",
@@ -18,7 +18,7 @@ export class GenerateFormComponent implements OnInit {
       }
     }
   ]`;
-  uiBindings: string = `["firstName"]`;
+  uiBindings: any = `["firstName"]`;
   viewMode: string = 'basic'
 
   constructor(private _router: Router) { }
@@ -27,14 +27,21 @@ export class GenerateFormComponent implements OnInit {
   }
   // ++++++++++++ Form Submit +++++++++++++++++
   formSubmit() {
-    console.log("Submitted Form Data:- ", typeof (this.customJson));
+    console.log("Submitted Form Data:- ", this.customJson);
   }
   // +++++++++++ Form Preview  ++++++++++++++++ 
   formPreview() {
+    this.uiBindings = JSON.parse(this.uiBindings);
+    this.customJson = JSON.parse(this.customJson);
+
     if (this.viewMode != undefined && this.viewMode != null && this.uiBindings != undefined && this.uiBindings != null && this.uiBindings.length > 0 && this.customJson != undefined && this.customJson != null && Object.keys(this.customJson).length > 0) {
+      this.uiBindings = [];
+      this.customJson.forEach((ele:any)=>{        
+        this.uiBindings.push(ele.name);       
+      })
       sessionStorage.setItem('viewMode', JSON.stringify(this.viewMode));
-      sessionStorage.setItem('uiBindings', this.uiBindings);
-      sessionStorage.setItem('formJson', this.customJson);
+      sessionStorage.setItem('uiBindings', JSON.stringify(this.uiBindings));
+      sessionStorage.setItem('formJson', JSON.stringify(this.customJson));
       this._router.navigate(['form-preview']);
     }
     else {
