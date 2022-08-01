@@ -16,18 +16,44 @@ export class GenerateFormComponent implements OnInit {
         "label": "First Name",
         "placeholder": "Enter Your First Name"
       }
+    },
+{
+      "type": "text",
+      "name": "lastName",
+      "ui": {
+        "label": "Last Name",
+        "placeholder": "Enter Your Last Name"
+      }
+    },
+{
+      "type": "text",
+      "name": "address",
+      "ui": {
+        "label": "Address",
+        "placeholder": "Enter Your Address"
+      }
+    },
+    {
+       "name": "agree",
+       "type": "checkbox",
+       "source": [
+          {
+             "value": 1,
+             "text": "Already a member"
+          }
+       ]
     }
-  ]`;
+ ]`;
   uiBindings: any = `["firstName"]`;
   viewMode: any = 'basic'
 
   constructor(private _router: Router) { }
 
   ngOnInit(): void {
-    if (JSON.parse(sessionStorage.getItem('viewMode') || '') != undefined && JSON.parse(sessionStorage.getItem('viewMode') || '') != null && JSON.parse(sessionStorage.getItem('viewMode') || '') != '') {
+    if (sessionStorage.getItem('viewMode') != undefined && sessionStorage.getItem('viewMode') != null && sessionStorage.getItem('viewMode') != '') {
       this.viewMode = JSON.parse(sessionStorage.getItem('viewMode') || '');
     }
-    if (JSON.parse(sessionStorage.getItem('formJson') || '') != undefined && JSON.parse(sessionStorage.getItem('formJson') || '') != null && JSON.parse(sessionStorage.getItem('formJson') || '') != '') {
+    if (sessionStorage.getItem('formJson') != undefined && sessionStorage.getItem('formJson') != null && sessionStorage.getItem('formJson') != '') {
       this.customJson = sessionStorage.getItem('formJson');
     }
   }
