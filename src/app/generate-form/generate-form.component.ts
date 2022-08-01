@@ -19,11 +19,17 @@ export class GenerateFormComponent implements OnInit {
     }
   ]`;
   uiBindings: any = `["firstName"]`;
-  viewMode: string = 'basic'
+  viewMode: any = 'basic'
 
   constructor(private _router: Router) { }
 
   ngOnInit(): void {
+    if (JSON.parse(sessionStorage.getItem('viewMode') || '') != undefined && JSON.parse(sessionStorage.getItem('viewMode') || '') != null && JSON.parse(sessionStorage.getItem('viewMode') || '') != '') {
+      this.viewMode = JSON.parse(sessionStorage.getItem('viewMode') || '');
+    }
+    if (JSON.parse(sessionStorage.getItem('formJson') || '') != undefined && JSON.parse(sessionStorage.getItem('formJson') || '') != null && JSON.parse(sessionStorage.getItem('formJson') || '') != '') {
+      this.customJson = sessionStorage.getItem('formJson');
+    }
   }
   // ++++++++++++ Form Submit +++++++++++++++++
   formSubmit() {
@@ -36,8 +42,8 @@ export class GenerateFormComponent implements OnInit {
 
     if (this.viewMode != undefined && this.viewMode != null && this.uiBindings != undefined && this.uiBindings != null && this.uiBindings.length > 0 && this.customJson != undefined && this.customJson != null && Object.keys(this.customJson).length > 0) {
       this.uiBindings = [];
-      this.customJson.forEach((ele:any)=>{        
-        this.uiBindings.push(ele.name);       
+      this.customJson.forEach((ele: any) => {
+        this.uiBindings.push(ele.name);
       })
       sessionStorage.setItem('viewMode', JSON.stringify(this.viewMode));
       sessionStorage.setItem('uiBindings', JSON.stringify(this.uiBindings));
