@@ -8,8 +8,17 @@ import { Router } from '@angular/router';
 })
 export class GenerateFormComponent implements OnInit {
 
-  customJson: string = '';
-  uiBindings: string = '';
+  customJson: string = `[
+    {
+      "type": "text",
+      "name": "firstName",
+      "ui": {
+        "label": "First Name",
+        "placeholder": "Enter Your First Name"
+      }
+    }
+  ]`;
+  uiBindings: string = `["firstName"]`;
   viewMode: string = 'basic'
 
   constructor(private _router: Router) { }

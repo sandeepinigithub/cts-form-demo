@@ -23,20 +23,6 @@ export class FormPreviewComponent implements OnInit {
     this.viewMode = JSON.parse(sessionStorage.getItem('viewMode') || '');
     this.uiBindings = JSON.parse(sessionStorage.getItem('uiBindings') || '');
     this.formJson = JSON.parse(sessionStorage.getItem('formJson') || '');
-    // ++++++++++++ Custom Form Value Start +++++++++++++++
-    // this.formJson = [
-    //   {
-    //     "type": "text",
-    //     "name": "firstName",
-    //     "ui": {
-    //       "label": "First Name",
-    //       "placeholder": "Enter Your First Name"
-    //     }
-    //   }
-    // ];
-    // this.uiBindings = ["firstName"];
-
-    // ++++++++++++ Custom Form Value End +++++++++++++++
 
     ReactiveFormConfig.set({
       validationMessage: {
