@@ -1,0 +1,18 @@
+<div class="form-wrapper">
+    <div class="container mt-4">
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-primary" (click)="moveBack()">Move Back</button>
+        </div>
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-8">
+                <h3>Form Preview</h3>
+                <div class="form-preview">
+                    <form [formGroup]="dynamicFormBuildConfig.formGroup">
+                        <div [viewMode]="viewMode" [rxwebDynamicForm]="dynamicFormBuildConfig" [uiBindings]="uiBindings">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
