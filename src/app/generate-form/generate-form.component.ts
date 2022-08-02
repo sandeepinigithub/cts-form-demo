@@ -14,12 +14,10 @@ export class GenerateFormComponent implements OnInit {
        "type": "text",
        "ui": {
           "viewMode": {
-             "horizontal": {
-                "label": [
-                   "col-sm-2"
-                ],
+             "advance": {
                 "div": [
-                   "col-sm-10"
+                   "col-md-6",
+                   "col-sm-6"
                 ]
              }
           },
@@ -32,12 +30,10 @@ export class GenerateFormComponent implements OnInit {
        "type": "password",
        "ui": {
           "viewMode": {
-             "horizontal": {
-                "label": [
-                   "col-sm-2"
-                ],
+             "advance": {
                 "div": [
-                   "col-sm-10"
+                   "col-md-6",
+                   "col-sm-6"
                 ]
              }
           },
@@ -46,62 +42,111 @@ export class GenerateFormComponent implements OnInit {
        }
     },
     {
-       "name": "radios",
-       "type": "radio",
+       "name": "address",
+       "type": "text",
+       "ui": {
+          "viewMode": {
+             "advance": {
+                "div": [
+                   "col-md-12",
+                   "col-sm-12"
+                ]
+             }
+          },
+          "label": "Address",
+          "placeholder": "1234 Main St"
+       }
+    },
+    {
+       "name": "address2",
+       "type": "text",
+       "ui": {
+          "viewMode": {
+             "advance": {
+                "div": [
+                   "col-md-12",
+                   "col-sm-12"
+                ]
+             }
+          },
+          "label": "Address 2",
+          "placeholder": "Apartment, studio or floor"
+       }
+    },
+    {
+       "name": "city",
+       "type": "text",
+       "ui": {
+          "viewMode": {
+             "advance": {
+                "div": [
+                   "col-md-6",
+                   "col-sm-6"
+                ]
+             }
+          },
+          "label": "City"
+       }
+    },
+    {
+       "name": "state",
+       "type": "select",
        "source": [
           {
              "value": 1,
-             "text": "Male"
-          },
-          {
-             "value": 2,
-             "text": "Female"
-          },
-          {
-             "value": 3,
-             "text": "None of the above",
-             "disabled": true
+             "text": "..."
           }
        ],
        "ui": {
           "viewMode": {
-             "horizontal": {
-                "label": [
-                   "col-sm-2"
-                ],
+             "advance": {
                 "div": [
-                   "col-sm-10"
+                   "col-md-4",
+                   "col-sm-4"
                 ]
              }
           },
-          "label": "Gender"
+          "label": "State",
+          "placeholder": "Choose"
        }
     },
     {
-       "name": "checkbox",
+       "name": "zip",
+       "type": "text",
+       "ui": {
+          "viewMode": {
+             "advance": {
+                "div": [
+                   "col-md-2",
+                   "col-sm-2"
+                ]
+             }
+          },
+          "label": "Zip"
+       }
+    },
+    {
+       "name": "check",
        "type": "checkbox",
        "source": [
           {
              "value": 1,
-             "text": "Are you married"
+             "text": "Check me out"
           }
        ],
        "ui": {
           "viewMode": {
-             "horizontal": {
-                "label": [
-                   "col-sm-2"
-                ],
+             "advance": {
                 "div": [
-                   "col-sm-10"
+                   "col-md-12",
+                   "col-sm-12"
                 ]
              }
-          },
-          "label": "Married"
+          }
        }
     }
  ]`;
-  uiBindings: any = `["email","password","radios","checkbox"]`;
+  uiBindings: any = `[["email", "password"], "address", "address2", ["city", "state", "zip"],"check"]`;
   viewMode: any = 'basic'
 
   constructor(private _router: Router) { }
