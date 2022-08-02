@@ -30,7 +30,27 @@ export class FormPreviewComponent implements OnInit {
       }
     })
     this.dynamicFormConfiguration = {
-      controlConfigModels: [] //{ modelName: "state", model: StateModel }  
+      controlConfigModels: [] ,//{ modelName: "state", model: StateModel }  
+      additionalConfig: [
+        {
+          type: 'card',
+          name: 'addressSection',
+          childrens: [
+            {
+              type: 'card-header',
+              props:
+              {
+                text: 'Address'
+              }
+            },
+            {
+              type: 'card-body',
+              childrens: ['t1','t2']
+            }
+          ],
+          skipDefaultView: true
+        }]
+
     }
     this.dynamicFormBuildConfig = this._dynamicFormBuilder?.formGroup(this.formJson, this.dynamicFormConfiguration);
   }

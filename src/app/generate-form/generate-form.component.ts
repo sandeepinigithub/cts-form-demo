@@ -10,41 +10,98 @@ export class GenerateFormComponent implements OnInit {
 
   customJson: any = `[
     {
-      "type": "text",
-      "name": "firstName",
-      "ui": {
-        "label": "First Name",
-        "placeholder": "Enter Your First Name"
-      }
-    },
-{
-      "type": "text",
-      "name": "lastName",
-      "ui": {
-        "label": "Last Name",
-        "placeholder": "Enter Your Last Name"
-      }
-    },
-{
-      "type": "text",
-      "name": "address",
-      "ui": {
-        "label": "Address",
-        "placeholder": "Enter Your Address"
-      }
+       "name": "email",
+       "type": "text",
+       "ui": {
+          "viewMode": {
+             "horizontal": {
+                "label": [
+                   "col-sm-2"
+                ],
+                "div": [
+                   "col-sm-10"
+                ]
+             }
+          },
+          "label": "Email",
+          "placeholder": "Email"
+       }
     },
     {
-       "name": "agree",
+       "name": "password",
+       "type": "password",
+       "ui": {
+          "viewMode": {
+             "horizontal": {
+                "label": [
+                   "col-sm-2"
+                ],
+                "div": [
+                   "col-sm-10"
+                ]
+             }
+          },
+          "label": "Password",
+          "placeholder": "Password"
+       }
+    },
+    {
+       "name": "radios",
+       "type": "radio",
+       "source": [
+          {
+             "value": 1,
+             "text": "Male"
+          },
+          {
+             "value": 2,
+             "text": "Female"
+          },
+          {
+             "value": 3,
+             "text": "None of the above",
+             "disabled": true
+          }
+       ],
+       "ui": {
+          "viewMode": {
+             "horizontal": {
+                "label": [
+                   "col-sm-2"
+                ],
+                "div": [
+                   "col-sm-10"
+                ]
+             }
+          },
+          "label": "Gender"
+       }
+    },
+    {
+       "name": "checkbox",
        "type": "checkbox",
        "source": [
           {
              "value": 1,
-             "text": "Already a member"
+             "text": "Are you married"
           }
-       ]
+       ],
+       "ui": {
+          "viewMode": {
+             "horizontal": {
+                "label": [
+                   "col-sm-2"
+                ],
+                "div": [
+                   "col-sm-10"
+                ]
+             }
+          },
+          "label": "Married"
+       }
     }
  ]`;
-  uiBindings: any = `["firstName"]`;
+  uiBindings: any = `["email","password","radios","checkbox"]`;
   viewMode: any = 'basic'
 
   constructor(private _router: Router) { }
